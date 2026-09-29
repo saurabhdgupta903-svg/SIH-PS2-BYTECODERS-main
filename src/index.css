@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Core Theme Palette */
+  --palette-violet: #5003C0;
+  --palette-violet-hover: #6814E0;
+  --palette-violet-subtle: rgba(80, 3, 192, 0.15);
+  --palette-violet-border: rgba(80, 3, 192, 0.35);
+
+  --palette-magenta: #AB03A9;
+  --palette-magenta-hover: #C413C2;
+
+  --palette-pink-red: #FF467A;
+  --palette-pink-red-hover: #FF6591;
+
+  --palette-yellow: #FFD51E;
+  --palette-yellow-hover: #FFE054;
+
+  /* Surfaces: Dark violet neutrals derived from #5003C0 */
+  --bg-page: #0D0620;
+  --bg-card: #160B30;
+  --bg-raised: #1F1240;
+  --bg-surface: #1A0E38;
+
+  /* Borders: Subtle low-opacity violet */
+  --border-subtle: #2D1B54;
+  --border-violet: rgba(80, 3, 192, 0.35);
+
+  /* Typography: WCAG AA compliant */
+  --text-primary: #F4EFFF;
+  --text-secondary: #B9AEDB;
+  --text-muted: #8E82B0;
+}
+
+@layer base {
+  * {
+    border-color: var(--border-subtle);
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    min-height: 100vh;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code, kbd, samp, pre, .font-mono {
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  ::selection {
+    background-color: rgba(80, 3, 192, 0.5);
+    color: #F4EFFF;
+  }
+
+  /* Form Controls */
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    background-color: var(--bg-raised);
+    color: var(--text-primary);
+    border-color: var(--border-subtle);
+  }
+
+  input:not([type="checkbox"]):not([type="radio"]):focus,
+  select:focus,
+  textarea:focus {
+    border-color: var(--palette-yellow);
+    outline: none;
+    box-shadow: 0 0 0 1px var(--palette-yellow);
+  }
+
+  select {
+    cursor: pointer;
+    color: var(--text-primary) !important;
+  }
+
+  select option {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    font-size: 0.8125rem;
+    padding: 6px 10px;
+  }
+
+  select option:hover,
+  select option:focus {
+    background-color: var(--bg-raised) !important;
+    color: var(--palette-yellow) !important;
+  }
+
+  select option:checked {
+    background-color: var(--palette-violet) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+  }
+}
+
+/* Custom violet-themed scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+::-webkit-scrollbar-thumb {
+  background: #2E195E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--palette-violet);
+}
+
+@media print {
+  header,
+  aside,
+  .no-print {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: white !important;
+    color: #0f172a !important;
+  }
+
+  .ts-report,
+  .ts-report section,
+  .ts-report div,
+  .ts-report table,
+  .ts-report thead,
+  .ts-report tbody,
+  .ts-report tr,
+  .ts-report th,
+  .ts-report td,
+  .ts-report caption,
+  .ts-report ul,
+  .ts-report li,
+  .ts-report p,
+  .ts-report h1,
+  .ts-report h2,
+  .ts-report h3,
+  .ts-report span {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: none !important;
+  }
+
+  tr {
+    break-inside: avoid;
+  }
+}
